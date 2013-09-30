@@ -14,9 +14,11 @@
         <p>Body</p>
         <p class="muted"><small>By My @ 0900 on 20130909</small></p>
         -->
-        {{if .temp}}
-        <p class="lead">{{.temp}}</p>
-        {{end}}
+        <p class="lead">{{.id}}</p>
+        ID: {{.record.Id}}<br/>
+        Revision: {{.record.Rev}}<br/>
+        Entry: {{.record.Entry}}<br/>
+        Name: {{.record.Name}}<br/>
     </div>
     <div id="push"></div>
 </div>
