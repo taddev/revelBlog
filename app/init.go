@@ -1,6 +1,9 @@
 package app
 
-import "github.com/robfig/revel"
+import (
+	"github.com/robfig/revel"
+	"github.com/taddevries/lazyboy"
+)
 
 func init() {
 	// Filters is the default set of global filters.
@@ -16,4 +19,6 @@ func init() {
 		revel.InterceptorFilter,       // Run interceptors around the action.
 		revel.ActionInvoker,           // Invoke the action.
 	}
+
+	revel.OnAppStart(lazyboy.AppInit)
 }
