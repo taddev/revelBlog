@@ -4,17 +4,25 @@ import (
 	"github.com/robfig/revel"
 	"github.com/taddevries/lazyboy"
 	"github.com/taddevries/revelBlog/app/models"
+	//"github.com/taddevries/revelBlog/app/routes"
 )
 
 type App struct {
 	*revel.Controller
-	lazyboy.CouchDBController
 }
 
 func (c App) Index() revel.Result {
-	//temp := c.DBUrl
-	id := "616edbad6650d9d1acb68b3157017c82"
-	record := models.Entry{}
-	c.Database.Retrieve(id, &record)
-	return c.Render(id, record)
+	result := models.View{}
+	opts := make(map[string]interface{})
+	opts["limit"] = 10
+
+	lazyboy.Database.Query("_design/blog/_view/header", opts, &result)
+	return c.Render(result)
+}
+
+func (c App) GetPost(id string) revel.Result {
+	result := models.Post{}
+
+	lazyboy.Database.Retrieve(id, &result)
+	return c.Render(result)
 }
