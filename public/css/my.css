@@ -1,0 +1,14 @@
+.page-header {
+  margin-top: 80px;
+  border-bottom: 0px;
+}
+
+#wrap {
+  padding-top: 80px;
+  margin: 0 auto;
+}
+
+.container {
+  width: auto;
+  max-width: 680px;
+}

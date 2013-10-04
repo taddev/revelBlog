@@ -1,0 +1,11 @@
+{{set . "title" .result.Header}}
+{{append . "moreStyles" "css/my.css"}}
+{{template "header.html" .}}
+<div id="wrap">
+    <div class="container"><!-- Begin page content -->
+{{template "flash.html" .}}        
+{{template "login.html" .}}
+    </div>
+</div>
+{{append . "moreScripts" "js/my.js"}}
+{{template "footer.html" .}}
