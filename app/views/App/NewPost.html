@@ -1,0 +1,28 @@
+{{set . "title" "Home"}}
+{{append . "moreStyles" "css/my.css"}}
+{{template "header.html" .}}
+{{template "toolbar.html" .}}
+<div id="wrap">
+    <div class="container"><!-- Begin page content --> 
+        <form role="form" action="{{url "App.SaveNewPost"}}" method="POST">
+			<div class="form-group">
+		    	<label for="exampleInputHeader1">Header</label>
+		    	<input type="text" class="form-control" id="exampleInputHeader1" placeholder="Post Header" name="post.Header">
+		  	</div>
+			<div class="form-group">
+				<label for="exampleInputTextArea1">Body</label>
+			    <textarea rows="7" class="form-control" id="exampleInputTextArea1" placeholder="Post Body" name="post.Body"></textarea>
+			</div>
+			<div class="form-group">
+			    <label for="exampleInputFile">File input</label>
+			    <input type="file" id="exampleInputFile">
+			    <p class="help-block">Example block-level help text here.</p>
+			</div>
+			  <button type="submit" class="btn btn-default">Submit</button>
+			  <button type="button" class="btn" id="cancel">Cancel</button>
+		</form>
+    </div>
+    <div id="push"></div>
+</div>
+{{append . "moreScripts" "js/my.js"}}
+{{template "footer.html" .}}

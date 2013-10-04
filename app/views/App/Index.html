@@ -1,8 +1,10 @@
 {{set . "title" "Home"}}
+{{append . "moreStyles" "css/my.css"}}
 {{template "header.html" .}}
+{{template "toolbar.html" .}}
 <div id="wrap">
     <div class="container"><!-- Begin page content -->
-{{ template "menu.html" .}}
+{{template "flash.html" .}}
         <!-- My blog format
         <p class="lead">Post Header</p>
         <p>Body</p>
@@ -17,11 +19,12 @@
         {{if .result}}
         <p class="lead">Total Rows: {{.result.TotalRows}}</p>
             {{range .result.Rows}}
-                <a href="{{url "App.GetPost" .Id}}">{{.Value}}</a><br/>
+                <a href="{{url "App.GetPost" .Id}}">{{index .Key 0}}/{{index .Key 1}}/{{index .Key 2}} - {{.Value}}</a><br/>
             {{end}}
+        {{else}}
+        <p class="lead">Nothing</p>
         {{end}}
     </div>
-    <div id="push"></div>
 </div>
-
+{{append . "moreScripts" "js/my.js"}}
 {{template "footer.html" .}}

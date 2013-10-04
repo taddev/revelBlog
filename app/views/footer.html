@@ -1,12 +1,11 @@
 {{if eq .RunMode "dev"}}
   {{template "debug.html" .}}
 {{end}}
-    <div id="footer">
-        <div class="container">
-            <p class="muted credit">Example courtesy <a href="http://martinbean.co.uk">Martin Bean</a> and <a href="http://ryanfait.com/sticky-footer/">Ryan Fait</a>.</p>
-        </div>
-    </div>
     <script src="http://code.jquery.com/jquery.js"></script>
     <script src="/public/js/bootstrap.min.js"></script>
+    <script src="/public/js/my.js"></script>
+{{range .moreScripts}}
+    <script src="/public/{{.}}" type="text/javascript" charset="utf-8"></script>
+{{end}}
   </body>
 </html>
