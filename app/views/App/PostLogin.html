@@ -1,11 +1,13 @@
-{{set . "title" "Home"}}
+{{set . "title" "index .result.Value 1"}}
 {{append . "moreStyles" "css/my.css"}}
 {{template "header.html" .}}
 {{template "toolbar.html" .}}
+{{template "flash.html" .}}
 <div id="wrap">
     <div class="container"><!-- Begin page content -->
-        <p class="lead">{{.post.Header}}</p>
-        <p>{{.post.Body}}
+        <p class="lead">{{.hashedPassword}}</p>
+        <p class="lead">{{.dbPassword}}</p>
+        <p class="lead">{{.password}}</p>
     </div>
 </div>
 {{append . "moreScripts" "js/my.js"}}

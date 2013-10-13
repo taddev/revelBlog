@@ -8,7 +8,7 @@
         <!-- My blog format -->
         <p class="lead">{{.result.Header}}</p>
         <p>{{.result.Body}}</p>
-        <p class="muted"><small>By {{.result.Author}} @ {{.postTime}} on {{.postDate}}</small></p>
+        <p class="muted"><small>By {{.result.Author}} @ {{timeFormat .result.Date}}</small></p>
 
         <!--
         <hr>
@@ -18,7 +18,6 @@
         <p class="muted"><small>By My @ 0900 on 20130909</small></p>
         -->
     </div>
-    <div id="push"></div>
 </div>
 {{append . "moreScripts" "js/my.js"}}
 {{template "footer.html" .}}

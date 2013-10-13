@@ -17,9 +17,11 @@
         <p class="muted"><small>By My @ 0900 on 20130909</small></p>
         -->
         {{if .result}}
-        <p class="lead">Total Rows: {{.result.TotalRows}}</p>
             {{range .result.Rows}}
-                <a href="{{url "App.GetPost" .Id}}">{{index .Key 0}}/{{index .Key 1}}/{{index .Key 2}} - {{.Value}}</a><br/>
+                <p class="lead"><a href="{{url "App.GetPost" .Id}}">{{index .Value 0}}</a></p>
+                <p>{{index .Value 1}}</p>
+                <p class="text-muted"><small>By {{index .Value 2}} on {{timeFormat .Key}}</small></p>
+                <hr>
             {{end}}
         {{else}}
         <p class="lead">Nothing</p>
