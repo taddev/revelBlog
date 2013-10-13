@@ -2,6 +2,8 @@ package app
 
 import (
 	"github.com/robfig/revel"
+	"github.com/taddevries/lazyboy"
+	"time"
 )
 
 func init() {
@@ -19,6 +21,21 @@ func init() {
 		revel.InterceptorFilter,       // Run interceptors around the action.
 		revel.ActionInvoker,           // Invoke the action.
 	}
+
+	//timeFormat provides a means to configure the way time is displayed
+	//this is configured as a custom template function so the way time
+	//is displayed can be changed just by changing this function's output
+	//each post stores it's time as a slice [yyyy,mm,dd,hh,mm,ss]
+	//this function takes that format and converts it to a native Go Time object
+	//the timezone information can also be set in the app.conf file or left to 
+	//it's default of UTC
+	revel.TemplateFuncs["timeFormat"] = func(date []int) string {
+		z, _ := time.LoadLocation(revel.Config.StringDefault("timezone", "UTC"))
+		t := time.Date(date[0], time.Month(date[1]), date[2], date[3], date[4], date[5], 0, z)
+		return t.Format(time.RFC3339)
+	}
+
+	revel.OnAppStart(lazyboy.AppInit)
 }
 
 var HeaderFilter = func(c *revel.Controller, fc []revel.Filter) {

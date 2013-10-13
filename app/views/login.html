@@ -1,9 +1,9 @@
-<form role="form" action="{{url "App.PostLogin"}}">
+<form role="form" action="{{url "App.PostLogin"}}" method="POST">
   <div class="form-group">
-    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+    <input type="text" class="form-control" placeholder="Username" name="user.Username" value="{{.flash.Username}}">
   </div>
   <div class="form-group">
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+    <input type="password" class="form-control" placeholder="Password" name="user.Password">
   </div>
   <button type="submit" class="btn btn-primary" style="clear: left; width: 100%; height: 32px; font-size: 13px;">Submit</button>
 </form>

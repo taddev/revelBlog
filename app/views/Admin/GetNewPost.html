@@ -4,14 +4,15 @@
 {{template "toolbar.html" .}}
 <div id="wrap">
     <div class="container"><!-- Begin page content --> 
-        <form role="form" action="{{url "App.SaveNewPost"}}" method="POST">
+{{template "flash.html" .}}
+        <form role="form" action="{{url "Admin.PostNewPost"}}" method="POST">
 			<div class="form-group">
-		    	<label for="exampleInputHeader1">Header</label>
-		    	<input type="text" class="form-control" id="exampleInputHeader1" placeholder="Post Header" name="post.Header">
+		    	<label for="PostHeader">Header</label> <span class="text-warning">*</span>
+		    	<input type="text" class="form-control" id="PostHeader" placeholder="Post Header" name="post.Header" value="{{index .flash "post.Header"}}" class="{{errorClass "post.Header" .}}">		    	
 		  	</div>
 			<div class="form-group">
-				<label for="exampleInputTextArea1">Body</label>
-			    <textarea rows="7" class="form-control" id="exampleInputTextArea1" placeholder="Post Body" name="post.Body"></textarea>
+				<label for="PostBody">Body</label> <span class="text-warning">*</span>
+			    <textarea rows="7" class="form-control" id="PostBody" placeholder="Post Body" name="post.Body" value="{{index .flash "post.Body"}}" class="{{errorClass "post.Body" .}}"></textarea>
 			</div>
 			<div class="form-group">
 			    <label for="exampleInputFile">File input</label>
