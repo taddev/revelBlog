@@ -2,11 +2,9 @@ package controllers
 
 import (
 	"code.google.com/p/go.crypto/bcrypt"
-	//"fmt"
 	"github.com/robfig/revel"
 	"github.com/taddevries/lazyboy"
 	"github.com/taddevries/revelBlog/app/models"
-	"github.com/taddevries/revelBlog/app/routes"
 )
 
 type App struct {
@@ -55,6 +53,10 @@ func (c App) GetPost(id string) revel.Result {
 }
 
 func (c App) GetLogin() revel.Result {
+	if user := c.connected(); user != nil {
+		c.RenderArgs["user"] = user
+		return c.Redirect(App.Index)
+	}
 	return c.Render()
 }
 
@@ -71,13 +73,13 @@ func (c App) PostLogin(user models.User) revel.Result {
 		if err == nil {
 			c.Session["Id"] = result.Rows[0].Id
 			c.Flash.Success("Login Success!")
-			return c.Redirect(routes.App.Index())
+			return c.Redirect(App.Index)
 		}
 	}
 
 	c.Flash.Out["Username"] = user.Username
 	c.Flash.Error("Login Failed")
-	return c.Redirect(routes.App.Index())
+	return c.Redirect(App.Index)
 }
 
 func (c App) GetLogout() revel.Result {
@@ -85,7 +87,7 @@ func (c App) GetLogout() revel.Result {
 		delete(c.Session, k)
 	}
 	c.Flash.Success("Logout Successful!")
-	return c.Redirect(routes.App.Index())
+	return c.Redirect(App.Index)
 }
 
 /*

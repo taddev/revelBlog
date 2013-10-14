@@ -10,6 +10,8 @@ GET     /Login                                  App.GetLogin
 POST    /Login                                  App.PostLogin
 GET     /Logout                                 App.GetLogout
 
+GET     /Admin/Settings                         Admin.GetSettings
+POST    /Admin/Settings                         Admin.PostSettings
 GET     /Admin/New                              Admin.GetNewPost
 POST    /Admin/New                              Admin.PostNewPost
 

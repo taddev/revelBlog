@@ -1,0 +1,67 @@
+{{set . "title" "Settings"}}
+{{append . "moreStyles" "css/my.css"}}
+{{template "header.html" .}}
+{{template "toolbar.html" .}}
+<div id="wrap">
+    <div class="container"><!-- Begin page content -->
+{{template "flash.html" .}}
+        <!-- My blog format
+        <p class="lead">Post Header</p>
+        <p>Body</p>
+        <p class="muted"><small>By My @ 0900 on 20130909</small></p>
+
+        <hr>
+        
+        <p class="lead">Post Header</p>
+        <p>Body</p>
+        <p class="muted"><small>By My @ 0900 on 20130909</small></p>
+        -->
+        <form class="form-horizontal" role="form" action="{{url "Admin.PostSettings"}}" method="POST">
+          <div class="form-group">
+            <label class="col-lg-3 control-label">Id</label>
+            <div class="col-lg-9">
+              <p class="form-control-static">{{.user.Id}}</p>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-lg-3 control-label">Rev</label>
+            <div class="col-lg-9">
+              <p class="form-control-static">{{.user.Rev}}</p>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="user.DisplayName" class="col-lg-3 control-label">Display name</label>
+            <div class="col-lg-9">
+              <input type="text" class="form-control" id="user.DisplayName" placeholder="Display Name" name="user.DisplayName" value="{{.user.DisplayName}}">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="user.Username" class="col-lg-3 control-label">Username</label>
+            <div class="col-lg-9">
+              <input type="text" class="form-control" id="user.Username" placeholder="User Name" name="user.Username" value="{{.user.Username}}">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="user.Password" class="col-lg-3 control-label">Password</label>
+            <div class="col-lg-9">
+              <input type="password" class="form-control" id="user.Password" placeholder="Password" name="user.Password">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="confirmPassword" class="col-lg-3 control-label">Confirm Password</label>
+            <div class="col-lg-9">
+              <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password" name="confirmPassword">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-lg-offset-3 col-lg-9">
+              <input type="hidden" name="user.Id" value="{{.user.Id}}">
+              <input type="hidden" name="user.Rev" value="{{.user.Rev}}">
+              <button type="submit" class="btn btn-default">Save</button>
+            </div>
+          </div>
+        </form>
+    </div>
+</div>
+{{append . "moreScripts" "js/my.js"}}
+{{template "footer.html" .}}

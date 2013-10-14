@@ -1,4 +1,4 @@
-{{set . "title" "Home"}}
+{{set . "title" "Settings"}}
 {{append . "moreStyles" "css/my.css"}}
 {{template "header.html" .}}
 {{template "toolbar.html" .}}
@@ -16,16 +16,12 @@
         <p>Body</p>
         <p class="muted"><small>By My @ 0900 on 20130909</small></p>
         -->
-        {{if .result}}
-            {{range .result.Rows}}
-                <p class="lead"><a href="{{url "App.GetPost" .Id}}">{{index .Value 0}}</a></p>
-                <p>{{index .Value 1}}</p>
-                <p class="text-muted"><small>By {{getAuthor (index .Value 2)}} on {{timeFormat .Key}}</small></p>
-                <hr>
-            {{end}}
-        {{else}}
-        <p class="lead">Nothing</p>
-        {{end}}
+        <p><strong>Id:</strong> {{.newuser.Id}}</p>
+        <p><strong>Rev:</strong> {{.newuser.Rev}}</p>
+        <p><strong>Display Name:</strong> {{.newuser.DisplayName}}</p>
+        <p><strong>Username:</strong> {{.newuser.Username}}</p>
+        <p><strong>Password:</strong> {{.newuser.Password}}</p>
+        <p><strong>Password Confirm:</strong> {{.newuser.PasswordConfirm}}</p>
     </div>
 </div>
 {{append . "moreScripts" "js/my.js"}}

@@ -7,10 +7,10 @@ $('#cancel').click(function(){
   return false;
 });
 
-/*
+
 alertTimeout = setTimeout(function() {
-	$('.alert').fadeOut("slow", "linear");
-}, 5000);
+	$('.alert-success').fadeOut("slow", "linear");
+}, 3000);
 /*
 $('.alert').click(function(){
 	$(this).fadeOut("slow", "linear");
