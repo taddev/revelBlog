@@ -4,4 +4,7 @@
 # See also:
 # - http://www.rfc-editor.org/rfc/bcp/bcp47.txt
 # - http://www.w3.org/International/questions/qa-accept-lang-locales
-
+post.header=Header
+post.body=Body
+post.missing.header=Header Required
+post.missing.body=Body Required

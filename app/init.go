@@ -3,6 +3,7 @@ package app
 import (
 	"github.com/robfig/revel"
 	"github.com/taddevries/lazyboy"
+	"github.com/taddevries/revelBlog/app/models"
 	"time"
 )
 
@@ -33,6 +34,13 @@ func init() {
 		z, _ := time.LoadLocation(revel.Config.StringDefault("timezone", "UTC"))
 		t := time.Date(date[0], time.Month(date[1]), date[2], date[3], date[4], date[5], 0, z)
 		return t.Format(time.RFC3339)
+	}
+
+	revel.TemplateFuncs["getAuthor"] = func(userId string) string {
+		user := models.User{}
+		lazyboy.Database.Retrieve(userId, &user)
+
+		return user.DisplayName
 	}
 
 	revel.OnAppStart(lazyboy.AppInit)
