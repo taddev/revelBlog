@@ -2,66 +2,60 @@
 {{append . "moreStyles" "css/my.css"}}
 {{template "header.html" .}}
 {{template "toolbar.html" .}}
-<div id="wrap">
-    <div class="container"><!-- Begin page content -->
-{{template "flash.html" .}}
-        <!-- My blog format
-        <p class="lead">Post Header</p>
-        <p>Body</p>
-        <p class="muted"><small>By My @ 0900 on 20130909</small></p>
+<div class="container">
+<!-- Content -->
+<div class="row">
+    <div class="col-lg-3">
+        <!--Left Column-->
+{{template "flash.html" .}}        
+    </div>
+    <div class="col-lg-6"><!-- Begin page content -->
+        <form role="form" action="{{url "Admin.PostSettings"}}" method="POST">
 
-        <hr>
-        
-        <p class="lead">Post Header</p>
-        <p>Body</p>
-        <p class="muted"><small>By My @ 0900 on 20130909</small></p>
-        -->
-        <form class="form-horizontal" role="form" action="{{url "Admin.PostSettings"}}" method="POST">
           <div class="form-group">
-            <label class="col-lg-3 control-label">Id</label>
-            <div class="col-lg-9">
-              <p class="form-control-static">{{.user.Id}}</p>
-            </div>
+            <label for="settingsId">Id</label>
+            <p class="form-control-static" id="settingsId">{{.user.Id}}</p>      
           </div>
+
           <div class="form-group">
-            <label class="col-lg-3 control-label">Rev</label>
-            <div class="col-lg-9">
-              <p class="form-control-static">{{.user.Rev}}</p>
-            </div>
+            <label for="settingsRev">Rev</label>
+            <p class="form-control-static" id="settingsRev">{{.user.Rev}}</p>      
           </div>
+
           <div class="form-group">
-            <label for="user.DisplayName" class="col-lg-3 control-label">Display name</label>
-            <div class="col-lg-9">
-              <input type="text" class="form-control" id="user.DisplayName" placeholder="Display Name" name="user.DisplayName" value="{{.user.DisplayName}}">
-            </div>
+            <label for="settingsDisplayName">Display Name</label> <span class="text-warning">*</span>
+            <input type="text" class="form-control" id="settingsDisplayName" placeholder="Display Name" name="user.DisplayName" value="{{.user.DisplayName}}">         
           </div>
+
           <div class="form-group">
-            <label for="user.Username" class="col-lg-3 control-label">Username</label>
-            <div class="col-lg-9">
-              <input type="text" class="form-control" id="user.Username" placeholder="User Name" name="user.Username" value="{{.user.Username}}">
-            </div>
+            <label for="settingsUsername">Username</label> <span class="text-warning">*</span>
+            <input type="text" class="form-control" id="settingsUsername" placeholder="Username" name="user.Username" value="{{.user.Username}}">         
           </div>
+
           <div class="form-group">
-            <label for="user.Password" class="col-lg-3 control-label">Password</label>
-            <div class="col-lg-9">
-              <input type="password" class="form-control" id="user.Password" placeholder="Password" name="user.Password">
-            </div>
+            <label for="settingsOldPassword">Old Password</label>
+            <input type="text" class="form-control" id="settingsOldPassword" placeholder="Old Password" name="oldPassword">         
           </div>
+
           <div class="form-group">
-            <label for="confirmPassword" class="col-lg-3 control-label">Confirm Password</label>
-            <div class="col-lg-9">
-              <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password" name="confirmPassword">
-            </div>
+            <label for="settingsNewPassword">New Password</label>
+            <input type="text" class="form-control" id="settingsNewPassword" placeholder="New Password" name="user.Password">         
           </div>
+
           <div class="form-group">
-            <div class="col-lg-offset-3 col-lg-9">
-              <input type="hidden" name="user.Id" value="{{.user.Id}}">
-              <input type="hidden" name="user.Rev" value="{{.user.Rev}}">
-              <button type="submit" class="btn btn-default">Save</button>
-            </div>
+            <label for="settingsConfirmNewPassword">Confirm New Password</label>
+            <input type="text" class="form-control" id="settingsConfirmNewPassword" placeholder="Confirm New Password" name="confirmPassword">         
           </div>
+
+          <input type="hidden" name="user.Id" value="{{.user.Id}}">
+          <input type="hidden" name="user.Rev" value="{{.user.Rev}}">
+          <button type="submit" class="btn btn-primary">Save</button>
         </form>
     </div>
+    <div class="col-lg-3">
+        <!-- Right Column -->
+    </div>
+</div>
 </div>
 {{append . "moreScripts" "js/my.js"}}
 {{template "footer.html" .}}

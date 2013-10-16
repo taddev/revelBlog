@@ -17,11 +17,11 @@ type ViewUserRow struct {
 }
 
 type User struct {
-	Id              string `json:"_id"`
-	Rev             string `json:"_rev"`
-	Username        string
-	DisplayName     string
-	Password        string
+	Id          string `json:"_id"`
+	Rev         string `json:"_rev"`
+	Username    string
+	DisplayName string
+	Password    string
 }
 
 func (user *User) Validate(v *revel.Validation, confirmPassword string) {

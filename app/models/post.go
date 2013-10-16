@@ -10,18 +10,17 @@ type ViewHeader struct {
 	Rows      []ViewHeaderRow
 }
 
-type ViewSummary struct {
-	TotalRows uint64 `json:"total_rows`
-	Offset    uint64
-	Rows      []ViewSummaryRow
-}
-
 type ViewHeaderRow struct {
 	Id    string
 	Key   []int
 	Value string
 }
 
+type ViewSummary struct {
+	TotalRows uint64 `json:"total_rows`
+	Offset    uint64
+	Rows      []ViewSummaryRow
+}
 type ViewSummaryRow struct {
 	Id    string
 	Key   []int
@@ -29,13 +28,14 @@ type ViewSummaryRow struct {
 }
 
 type Post struct {
-	Id     string `json:"_id"`
-	Rev    string `json:"_rev"`
-	Header string
-	Body   string
-	Date   []int
-	Author string
-	Type   string
+	Id       string `json:"_id"`
+	Rev      string `json:"_rev"`
+	Author   string
+	Body     string
+	Category string
+	Date     []int
+	Header   string
+	Type     string
 }
 
 func (post *Post) Validate(v *revel.Validation) {

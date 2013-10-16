@@ -5,15 +5,15 @@
 module:testrunner
 
 GET     /                                       App.Index
-GET     /Post/:id                               App.GetPost
-GET     /Login                                  App.GetLogin
-POST    /Login                                  App.PostLogin
-GET     /Logout                                 App.GetLogout
+GET     /post/:id                               App.GetPost
+GET     /:category                              App.GetCategory
+POST    /login                                  App.PostLogin
+GET     /logout                                 App.GetLogout
 
-GET     /Admin/Settings                         Admin.GetSettings
-POST    /Admin/Settings                         Admin.PostSettings
-GET     /Admin/New                              Admin.GetNewPost
-POST    /Admin/New                              Admin.PostNewPost
+GET     /admin/settings                         Admin.GetSettings
+POST    /admin/settings                         Admin.PostSettings
+GET     /admin/new/post                         Admin.GetNewPost
+POST    /admin/new/post                         Admin.PostNewPost
 
 # Ignore favicon requests
 GET     /favicon.ico                            404

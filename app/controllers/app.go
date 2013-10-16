@@ -90,6 +90,10 @@ func (c App) GetLogout() revel.Result {
 	return c.Redirect(App.Index)
 }
 
+func (c App) GetCategory(category string) revel.Result {
+	return c.Render()
+}
+
 /*
 func (c App) AddUser() revel.Result {
 	bcryptPassword, _ := bcrypt.GenerateFromPassword([]byte("demo"), bcrypt.DefaultCost)

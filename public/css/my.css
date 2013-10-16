@@ -3,12 +3,6 @@
   border-bottom: 0px;
 }
 
-#wrap {
-  padding-top: 80px;
-  margin: 0 auto;
-}
-
 .container {
-  width: auto;
-  max-width: 680px;
+  padding-top: 70px;
 }
