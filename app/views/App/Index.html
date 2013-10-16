@@ -2,9 +2,14 @@
 {{append . "moreStyles" "css/my.css"}}
 {{template "header.html" .}}
 {{template "toolbar.html" .}}
-<div id="wrap">
-    <div class="container"><!-- Begin page content -->
-{{template "flash.html" .}}
+<div class="container">
+<!-- Content -->
+<div class="row">
+    <div class="col-lg-3">
+        <!--Left Column-->
+{{template "flash.html" .}}        
+    </div>
+    <div class="col-lg-6"><!-- Begin page content -->
         <!-- My blog format
         <p class="lead">Post Header</p>
         <p>Body</p>
@@ -27,6 +32,10 @@
         <p class="lead">Nothing</p>
         {{end}}
     </div>
+    <div class="col-lg-3">
+        <!-- Right Column -->
+    </div>
+</div>
 </div>
 {{append . "moreScripts" "js/my.js"}}
 {{template "footer.html" .}}

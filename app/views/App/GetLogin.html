@@ -1,11 +1,20 @@
-{{set . "title" .result.Header}}
+{{set . "title" "Login"}}
 {{append . "moreStyles" "css/my.css"}}
 {{template "header.html" .}}
-<div id="wrap">
-    <div class="container"><!-- Begin page content -->
-{{template "flash.html" .}}        
+<div class="container">
+<!-- Content -->
+<div class="row">
+    <div class="col-xs-6 col-md-6 col-lg-3">
+        <!--Left Column-->
+    </div>
+    <div class="col-xs-12 col-md-12 col-lg-6"><!-- Begin page content -->       
 {{template "login.html" .}}
     </div>
+    <div class="col-xs-6 col-md-6 col-lg-3">
+        <!-- Right Column -->
+{{template "flash.html" .}}
+    </div>
+</div>
 </div>
 {{append . "moreScripts" "js/my.js"}}
 {{template "footer.html" .}}

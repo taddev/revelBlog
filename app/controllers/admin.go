@@ -23,8 +23,11 @@ func (c Admin) CheckUser() revel.Result {
 }
 
 func (c Admin) GetNewPost() revel.Result {
+	categories := models.ViewCategory{}
+	opts := make(map[string]interface{})
+	lazyboy.Database.Query("_design/blog/_view/category", opts, &categories)
 
-	return c.Render()
+	return c.Render(categories)
 }
 
 func (c Admin) PostNewPost(post models.Post) revel.Result {
@@ -71,7 +74,18 @@ func (c Admin) GetSettings() revel.Result {
 	return c.Render()
 }
 
-func (c Admin) PostSettings(user models.User, confirmPassword string) revel.Result {
+func (c Admin) PostSettings(user models.User, confirmPassword, oldPassword string) revel.Result {
+	//get the current settings from the database
+	tempuser := c.getUser(user.Id)
+
+	if oldPassword != "" {
+		err := bcrypt.CompareHashAndPassword([]byte(tempuser.Password), []byte(oldPassword))
+		if err != nil {
+			c.Flash.Error("Old Password Incorrect!")
+			return c.Redirect(Admin.GetSettings)
+		}
+	}
+
 	//validate everything
 	user.Validate(c.Validation, confirmPassword)
 
@@ -89,7 +103,6 @@ func (c Admin) PostSettings(user models.User, confirmPassword string) revel.Resu
 		bcryptPassword, _ := bcrypt.GenerateFromPassword([]byte(user.Password), bcrypt.DefaultCost)
 		user.Password = string(bcryptPassword)
 	} else {
-		tempuser := c.getUser(user.Id)
 		user.Password = tempuser.Password
 	}
 

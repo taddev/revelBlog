@@ -2,22 +2,23 @@
 {{append . "moreStyles" "css/my.css"}}
 {{template "header.html" .}}
 {{template "toolbar.html" .}}
-{{template "flash.html" .}}
-<div id="wrap">
-    <div class="container"><!-- Begin page content -->
+<div class="container">
+<!-- Content -->
+<div class="row">
+    <div class="col-xs-6 col-md-6 col-lg-3">
+        <!--Left Column-->
+    </div>
+    <div class="col-xs-12 col-md-12 col-lg-6"><!-- Begin page content -->
         <!-- My blog format -->
         <p class="lead">{{.result.Header}}</p>
         <p>{{.result.Body}}</p>
-        <p class="muted"><small>By {{.result.Author}} @ {{timeFormat .result.Date}}</small></p>
-
-        <!--
-        <hr>
-        
-        <p class="lead">Post Header</p>
-        <p>Body</p>
-        <p class="muted"><small>By My @ 0900 on 20130909</small></p>
-        -->
+        <p class="text-muted"><small>By {{.result.Author}} @ {{timeFormat .result.Date}}</small></p>
     </div>
+    <div class="col-xs-6 col-md-6 col-lg-3">
+        <!-- Right Column -->
+{{template "flash.html" .}}
+    </div>
+</div>
 </div>
 {{append . "moreScripts" "js/my.js"}}
 {{template "footer.html" .}}
