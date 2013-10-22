@@ -122,3 +122,15 @@ func (c Admin) PostSettings(user models.User, confirmPassword, oldPassword strin
 	c.Flash.Success("Edit Successful")
 	return c.Redirect(Admin.GetSettings)
 }
+
+func (c Admin) GetLogout() revel.Result {
+	for k := range c.Session {
+		delete(c.Session, k)
+	}
+	c.Flash.Success("Logout Successful!")
+	return c.Redirect(App.Index)
+}
+
+func (c Admin) Index() revel.Result {
+	return c.Render()
+}

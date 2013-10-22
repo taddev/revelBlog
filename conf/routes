@@ -5,15 +5,20 @@
 module:testrunner
 
 GET     /                                       App.Index
-GET     /post/:id                               App.GetPost
-GET     /:category                              App.GetCategory
+GET     /category/:id                           App.GetCategory
+GET     /user/:id                               App.GetUser
 POST    /login                                  App.PostLogin
-GET     /logout                                 App.GetLogout
 
+GET     /admin/dashboard                        Admin.Index
 GET     /admin/settings                         Admin.GetSettings
 POST    /admin/settings                         Admin.PostSettings
 GET     /admin/new/post                         Admin.GetNewPost
 POST    /admin/new/post                         Admin.PostNewPost
+GET     /admin/logout                           Admin.GetLogout
+
+# Display post, priority is low to avoid collisions with predefined
+# routes.
+GET     /:id                                    App.GetPost
 
 # Ignore favicon requests
 GET     /favicon.ico                            404

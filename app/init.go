@@ -28,12 +28,13 @@ func init() {
 	//is displayed can be changed just by changing this function's output
 	//each post stores it's time as a slice [yyyy,mm,dd,hh,mm,ss]
 	//this function takes that format and converts it to a native Go Time object
-	//the timezone information can also be set in the app.conf file or left to 
+	//the timezone information can also be set in the app.conf file or left to
 	//it's default of UTC
 	revel.TemplateFuncs["timeFormat"] = func(date []int) string {
+		const layout = "_2 Oct 2006"
 		z, _ := time.LoadLocation(revel.Config.StringDefault("timezone", "UTC"))
 		t := time.Date(date[0], time.Month(date[1]), date[2], date[3], date[4], date[5], 0, z)
-		return t.Format(time.RFC3339)
+		return t.Format(layout)
 	}
 
 	revel.TemplateFuncs["getAuthor"] = func(userId string) string {
@@ -41,6 +42,12 @@ func init() {
 		lazyboy.Database.Retrieve(userId, &user)
 
 		return user.DisplayName
+	}
+
+	revel.TemplateFuncs["getCategory"] = func(categoryId string) string {
+		category := models.Category{}
+		lazyboy.Database.Retrieve(categoryId, &category)
+		return category.Description
 	}
 
 	revel.OnAppStart(lazyboy.AppInit)
