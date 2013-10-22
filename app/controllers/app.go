@@ -36,14 +36,13 @@ func (c App) getUser(id string) *models.User {
 }
 
 func (c App) Index() revel.Result {
-	result := models.ViewSummary{}
+	summaries := models.ViewSummary{}
 	opts := make(map[string]interface{})
 	opts["limit"] = 10
 	opts["descending"] = true
 
-	lazyboy.Database.Query("_design/blog/_view/summary", opts, &result)
-	rowCount := len(result.Rows)
-	return c.Render(result, rowCount)
+	lazyboy.Database.Query("_design/blog/_view/summary", opts, &summaries)
+	return c.Render(summaries)
 }
 
 func (c App) GetPost(id string) revel.Result {
@@ -73,7 +72,7 @@ func (c App) PostLogin(user models.User) revel.Result {
 		if err == nil {
 			c.Session["Id"] = result.Rows[0].Id
 			c.Flash.Success("Login Success!")
-			return c.Redirect(App.Index)
+			return c.Redirect(Admin.Index)
 		}
 	}
 
@@ -82,15 +81,13 @@ func (c App) PostLogin(user models.User) revel.Result {
 	return c.Redirect(App.Index)
 }
 
-func (c App) GetLogout() revel.Result {
-	for k := range c.Session {
-		delete(c.Session, k)
-	}
-	c.Flash.Success("Logout Successful!")
-	return c.Redirect(App.Index)
+func (c App) GetCategory(id string) revel.Result {
+
+	return c.Render()
 }
 
-func (c App) GetCategory(category string) revel.Result {
+func (c App) GetUser(id string) revel.Result {
+
 	return c.Render()
 }
 

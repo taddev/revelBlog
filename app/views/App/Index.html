@@ -1,15 +1,12 @@
 {{set . "title" "Home"}}
 {{append . "moreStyles" "css/my.css"}}
+{{append . "moreStyles" "css/roboto-font.css"}}
 {{template "header.html" .}}
 {{template "toolbar.html" .}}
-<div class="container">
 <!-- Content -->
+<div class="container">
 <div class="row">
-    <div class="col-lg-3">
-        <!--Left Column-->
-{{template "flash.html" .}}        
-    </div>
-    <div class="col-lg-6"><!-- Begin page content -->
+    <div class="col-lg-8"><!-- Begin page content -->
         <!-- My blog format
         <p class="lead">Post Header</p>
         <p>Body</p>
@@ -21,19 +18,28 @@
         <p>Body</p>
         <p class="muted"><small>By My @ 0900 on 20130909</small></p>
         -->
-        {{if .result}}
-            {{range .result.Rows}}
-                <p class="lead"><a href="{{url "App.GetPost" .Id}}">{{index .Value 0}}</a></p>
-                <p>{{index .Value 1}}</p>
-                <p class="text-muted"><small>By {{getAuthor (index .Value 2)}} on {{timeFormat .Key}}</small></p>
-                <hr>
+        {{if .summaries}}
+            {{range .summaries.Rows}}
+            <article class="post">
+                <span class="text-info">{{timeFormat .Key}}</span>
+                <header class="lead"><a href="{{url "App.GetPost" .Id}}">{{index .Value 0}}</a></header>
+                <section>{{index .Value 1}}</section>
+                <footer class="text-muted">
+                    <small>
+                        -- <a href="user/{{getAuthor (index .Value 2)}}">{{getAuthor (index .Value 2)}}</a>
+                        <span class="pull-right"><a href="category/{{index .Value 3}}">{{getCategory (index .Value 3)}}</a></span>
+                    </small>
+                </footer>
+            </article>
             {{end}}
         {{else}}
         <p class="lead">Nothing</p>
         {{end}}
     </div>
-    <div class="col-lg-3">
+    <div class="col-lg-4">
         <!-- Right Column -->
+        Right Fill
+{{template "flash.html" .}}         
     </div>
 </div>
 </div>

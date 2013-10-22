@@ -1,24 +1,25 @@
 {{set . "title" .result.Header}}
 {{append . "moreStyles" "css/my.css"}}
+{{append . "moreStyles" "css/roboto-font.css"}}
 {{template "header.html" .}}
 {{template "toolbar.html" .}}
-<div class="container">
 <!-- Content -->
 <div class="row">
-    <div class="col-xs-6 col-md-6 col-lg-3">
+    <div class="col-lg-3">
         <!--Left Column-->
     </div>
-    <div class="col-xs-12 col-md-12 col-lg-6"><!-- Begin page content -->
+    <div class="col-lg-6"><!-- Begin page content -->
         <!-- My blog format -->
+        <p class="text-muted">{{timeFormat .result.Date}}</p>
         <p class="lead">{{.result.Header}}</p>
         <p>{{.result.Body}}</p>
-        <p class="text-muted"><small>By {{.result.Author}} @ {{timeFormat .result.Date}}</small></p>
+        <hr>
+        <p class="text-muted"><small>By <a href="#">{{getAuthor .result.Author}}</a> Filed in <a href="#">Category</a></small></p>
     </div>
-    <div class="col-xs-6 col-md-6 col-lg-3">
+    <div class="col-lg-3">
         <!-- Right Column -->
 {{template "flash.html" .}}
     </div>
-</div>
 </div>
 {{append . "moreScripts" "js/my.js"}}
 {{template "footer.html" .}}

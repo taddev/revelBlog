@@ -1,0 +1,11 @@
+{{set . "title" "User"}}
+{{append . "moreStyles" "css/my.css"}}
+{{template "header.html" .}}
+{{template "toolbar.html" .}}
+<!-- content -->
+<h3>User</h3>
+{{if .referer}}
+<h3>{{.referer}}</h3>
+{{end}}
+{{append . "moreScripts" "js/my.js"}}
+{{template "footer.html" .}}
