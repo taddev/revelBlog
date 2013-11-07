@@ -91,14 +91,3 @@ func (c App) GetUser(id string) revel.Result {
 	return c.Render()
 }
 
-/*
-func (c App) AddUser() revel.Result {
-	bcryptPassword, _ := bcrypt.GenerateFromPassword([]byte("demo"), bcrypt.DefaultCost)
-	stringPassword := string(bcryptPassword)
-	demoUser := models.User{Id:"", Rev:"", Username:"demo", DisplayName:"Demo User", Password:stringPassword}
-
-	lazyboy.Database.Insert(demoUser)
-	c.Flash.Success("Demo User Added")
-	return c.Redirect(routes.App.Index())
-}
-*/
