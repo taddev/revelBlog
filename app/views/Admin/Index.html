@@ -4,6 +4,7 @@
 {{template "header.html" .}}
 {{template "toolbar.html" .}}
 <!-- Content -->
+<div class="container-fluid">
 <div class="row">
     <div class="col-lg-2">
         <!--Left Column-->
@@ -22,6 +23,7 @@
         <!-- Right Column -->
 {{template "flash.html" .}}         
     </div>
+</div>
 </div>
 {{append . "moreScripts" "js/my.js"}}
 {{template "footer.html" .}}

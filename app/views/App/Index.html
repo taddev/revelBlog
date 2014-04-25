@@ -1,24 +1,27 @@
 {{set . "title" "Home"}}
+{{append . "moreStyles" "css/my.css"}}
 {{template "header.html" .}}
-	<div class="ten columns">
+{{template "toolbar.html"}}
+<!-- Content -->
+<div class="container-fluid">
+<div class="row">
+    <div class="col-lg-9"><!-- Begin page content -->
 {{if .summaries}}
   {{range .summaries.Rows}}
 		<h3><a href="{{url "App.GetPost" .Id}}">{{index .Value 0}}</a></h3>
 		<p>{{index .Value 1}}</p>
 		<small>-- Posted by <a href="user/{{getAuthor (index .Value 2)}}">{{getAuthor (index .Value 2)}}</a> on {{timeFormat .Key}}{{if index .Value 3}}, filed under <a href="category/{{index .Value 3}}">{{getCategory (index .Value 3)}}</a>{{end}}</small>
 		<hr/>
-  {{end}}
+{{end}}
 {{else}}
 		<h3>Nothing</h3>
 {{end}}
-	</div>
-	<div class="six columns omega">
-		<h3>Splunk.net</h3>
-		<a href="#">Login</a><br/>
-		----<br/>
-		<a href="#">One</a><br/>
-		<a href="#">Two</a><br/>
+    </div>
+    <div class="col-lg-3">
+        <!-- Right Column -->
 {{template "flash.html" .}}         
-	</div>
+    </div>
+</div>
+</div>
 {{append . "moreScripts" "js/my.js"}}
 {{template "footer.html" .}}
