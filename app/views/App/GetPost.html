@@ -1,25 +1,17 @@
 {{set . "title" .result.Header}}
-{{append . "moreStyles" "css/my.css"}}
-{{append . "moreStyles" "css/roboto-font.css"}}
 {{template "header.html" .}}
 {{template "toolbar.html" .}}
 <!-- Content -->
-<div class="row">
-    <div class="col-lg-3">
-        <!--Left Column-->
-    </div>
-    <div class="col-lg-6"><!-- Begin page content -->
+    <div class="nine columns alpha offset-by-one">
         <!-- My blog format -->
-        <p class="text-muted">{{timeFormat .result.Date}}</p>
-        <p class="lead">{{.result.Header}}</p>
+        <h3>{{.result.Header}}</h3>
         <p>{{.result.Body}}</p>
         <hr>
-        <p class="text-muted"><small>By <a href="#">{{getAuthor .result.Author}}</a> Filed in <a href="#">Category</a></small></p>
+        <small>-- Posted by <a href="user/{{getAuthor .result.Author}}">{{getAuthor .result.Author}}</a> on {{timeFormat .result.Date}}{{if .result.Category}}, filed under <a href="category/{{.result.Category}}">{{getCategory .result.Category}}</a>{{end}}</small>
     </div>
-    <div class="col-lg-3">
+    <div class="six columns omega">
         <!-- Right Column -->
 {{template "flash.html" .}}
     </div>
-</div>
 {{append . "moreScripts" "js/my.js"}}
 {{template "footer.html" .}}

@@ -1,7 +1,7 @@
 package app
 
 import (
-	"github.com/robfig/revel"
+	"github.com/revel/revel"
 	"github.com/taddevries/lazyboy"
 	"github.com/taddevries/revelBlog/app/models"
 	"time"
@@ -31,7 +31,7 @@ func init() {
 	//the timezone information can also be set in the app.conf file or left to
 	//it's default of UTC
 	revel.TemplateFuncs["timeFormat"] = func(date []int) string {
-		const layout = "_2 Oct 2006"
+		const layout = "_2 Jan 2006"
 		z, _ := time.LoadLocation(revel.Config.StringDefault("timezone", "UTC"))
 		t := time.Date(date[0], time.Month(date[1]), date[2], date[3], date[4], date[5], 0, z)
 		return t.Format(layout)

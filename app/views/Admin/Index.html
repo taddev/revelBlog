@@ -10,7 +10,13 @@
 {{template "adminmenu.html"}}       
     </div>
     <div class="col-lg-7"><!-- Begin page content -->
-    <h2>Hello World</h2>
+        {{if .headers}}
+            {{range .headers.Rows}}
+                <p class="text-info">{{timeFormat .Key}} - <a href="#">{{.Value}}</a></p>
+            {{end}}
+        {{else}}
+        <p class="lead">Nothing</p>
+        {{end}}
     </div>
     <div class="col-lg-3">
         <!-- Right Column -->
