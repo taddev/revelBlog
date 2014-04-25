@@ -5,8 +5,7 @@
 <!-- Content -->
 <div class="row">
     <div class="col-lg-2">
-        <!--Left Column-->
-{{template "flash.html" .}} 
+        <!--Left Column--> 
 {{template "adminmenu.html"}}       
     </div>
     <div class="col-lg-7"><!-- Begin page content -->
@@ -54,6 +53,7 @@
     </div>
     <div class="col-lg-3">
         <!-- Right Column -->
+{{template "flash.html" .}}        
     </div>
 </div>
 {{append . "moreScripts" "js/my.js"}}

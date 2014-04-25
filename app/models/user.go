@@ -25,7 +25,7 @@ type User struct {
 }
 
 func (user *User) Validate(v *revel.Validation, confirmPassword string) {
-	v.Required(user.Username).Message("Username Reuired")
+	v.Required(user.Username).Message("Username Required")
 	v.MinSize(user.Username, 3)
 	v.Required(user.DisplayName).Message("Display Name Required")
 	v.Required(confirmPassword == user.Password).Message("The passwords do not match")

@@ -9,7 +9,7 @@ import (
 	"bufio"
 	"code.google.com/p/go.crypto/bcrypt"
 	"fmt"
-	"github.com/robfig/revel"
+	"github.com/revel/revel"
 	"github.com/taddevries/lazyboy"
 	"github.com/taddevries/revelBlog/app/models"
 	"os"
