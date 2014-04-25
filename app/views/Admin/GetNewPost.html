@@ -5,8 +5,7 @@
 <!-- Content -->
 <div class="row">
     <div class="col-lg-2">
-        <!--Left Column-->
-{{template "flash.html" .}} 
+        <!--Left Column--> 
 {{template "adminmenu.html"}}       
     </div>
     <div class="col-lg-7"><!-- Begin page content -->
@@ -40,10 +39,13 @@
 				<button type="button" class="btn" id="cancel">Cancel</button>
 			</div>
 		</form>
+		<div id="epiceditor"></div>
     </div>
     <div class="col-lg-3">
         <!-- Right Column -->
+        {{template "flash.html" .}}
     </div>
 </div>
+{{append . "moreScripts" "js/epiceditor.min.js"}}
 {{append . "moreScripts" "js/my.js"}}
 {{template "footer.html" .}}

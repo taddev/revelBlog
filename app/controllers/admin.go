@@ -3,7 +3,7 @@ package controllers
 import (
 	"code.google.com/p/go.crypto/bcrypt"
 	//"fmt"
-	"github.com/robfig/revel"
+	"github.com/revel/revel"
 	"github.com/taddevries/lazyboy"
 	"github.com/taddevries/revelBlog/app/models"
 	"strings"
@@ -132,5 +132,10 @@ func (c Admin) GetLogout() revel.Result {
 }
 
 func (c Admin) Index() revel.Result {
-	return c.Render()
+	headers := models.ViewHeader{}
+	opts := make(map[string]interface{})
+	opts["descending"] = true
+
+	lazyboy.Database.Query("_design/blog/_view/header", opts, &headers)
+	return c.Render(headers)
 }
