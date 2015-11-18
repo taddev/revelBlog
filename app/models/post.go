@@ -13,7 +13,7 @@ type ViewHeader struct {
 type ViewHeaderRow struct {
 	Id    string
 	Key   []int
-	Value string
+	Value []string
 }
 
 type ViewSummary struct {

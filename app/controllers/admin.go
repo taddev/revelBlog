@@ -1,11 +1,10 @@
 package controllers
 
 import (
-	"code.google.com/p/go.crypto/bcrypt"
-	//"fmt"
 	"github.com/revel/revel"
-	"github.com/taddevries/lazyboy"
-	"github.com/taddevries/revelBlog/app/models"
+	"github.com/taddev/lazyboy"
+	"github.com/taddev/revelBlog/app/models"
+	"golang.org/x/crypto/bcrypt"
 	"strings"
 	"time"
 )
