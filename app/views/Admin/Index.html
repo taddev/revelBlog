@@ -13,7 +13,7 @@
     <div class="col-lg-7"><!-- Begin page content -->
         {{if .headers}}
             {{range .headers.Rows}}
-                <p class="text-info">{{timeFormat .Key}} - <a href="#">{{.Value}}</a></p>
+                <p class="text-info">{{timeFormat .Key}} - <a href="#">{{index .Value 0}}</a></p>
             {{end}}
         {{else}}
         <p class="lead">Nothing</p>

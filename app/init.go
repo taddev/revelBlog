@@ -2,8 +2,8 @@ package app
 
 import (
 	"github.com/revel/revel"
-	"github.com/taddevries/lazyboy"
-	"github.com/taddevries/revelBlog/app/models"
+	"github.com/taddev/lazyboy"
+	"github.com/taddev/revelBlog/app/models"
 	"time"
 )
 
